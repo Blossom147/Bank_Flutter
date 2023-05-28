@@ -1,13 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:qr/dto/Header.dart';
 import 'package:qr/screens/transfer_screen.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:qr/dto/DeCodeQRResponse.dart';
 
-import 'dto/DeCodeQRResponse.dart';
+
 class QrCamera extends StatefulWidget {
   const QrCamera({Key? key}) : super(key: key);
 
@@ -171,10 +173,18 @@ class _QrCameraState extends State<QrCamera> {
       ),
     );
   }
-  Future<DeCodeQRResponse> sendQRData(String qrString) async {
-    final rawURL = "http://10.100.105.54:8080/infogw/qr/v1/readQR";
-    final url = Uri.parse('http://192.168.137.1:8080/infogw/qr/v1/readQR');
-    final json = {
+
+  Future<void> sendQRData(String qrString) async {
+    // Define the URL of the backend API endpoint
+    final url = Uri.parse('http://10.100.105.54:8082/infogw/qr/v1/readQR');
+
+    // Define the headers for the HTTP request
+    final headers = <String, String>{
+      'Content-Type': 'application/json',
+    };
+
+    // Define the body of the HTTP request as a JSON-encoded string
+    final json = jsonEncode({
       'header': {
         'bkCd': 'KEBHANABANK',
         'brCd': 'HN',
@@ -183,25 +193,32 @@ class _QrCameraState extends State<QrCamera> {
         'reqResGb': 'REQ',
         'refNo': '2023010109000000001',
         'errCode': null,
-        'errDesc': null
+        'errDesc': null,
       },
-      'data': {'qrString': qrString   , 'channel': 'M'}
-    };
+      'data': {
+        'qrString': qrString,
+        'channel': 'M',
+      },
+    });
 
-    Map<String, String> headers = {'Content-Type': 'application/json'};
-    // final json = {
-    //   'data': {'qrString': qrString},
-    // };
-    // final headers = {'Content-Type': 'application/json'};
-    final response = await http.post(url, headers: headers, body: jsonEncode(json));
-    print(response);
+    // Send the HTTP request to the backend API endpoint
+    final response = await http.post(url, headers: headers, body: json);
+
+    // Handle the response from the backend API endpoint
     if (response.statusCode == 200) {
-      final result = jsonDecode(response.body);
-      return DeCodeQRResponse.fromJson(result);
+      print(response.body);
+      final jsonResponse = jsonDecode(response.body);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => TransferScreen(jsonResponse: jsonResponse, qrString: '',),
+        ),
+      );
     } else {
-      throw Exception('Failed to send QR data.');
+      print('Error sending QR data: ${response.statusCode}');
     }
   }
+
   void _onQRViewCreated(QRViewController controller) {
 
     bool isScanned = false;
@@ -219,10 +236,6 @@ class _QrCameraState extends State<QrCamera> {
           qrString = scanData.code!;
         });
         sendQRData(qrString);
-        Navigator.push(context,
-        MaterialPageRoute(builder: (context) => TransferScreen(qrString: qrString, senderName: '', senderAccount: '', receiverName: '', receiverAccount: '', receiverBank: '', amount: '', currency: '', note: '',),
-        ),
-        );
       }
     });
 
