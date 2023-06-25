@@ -1,5 +1,6 @@
-import 'package:banking_app/theme/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../theme/colors.dart';
 
 class BalanceCard extends StatelessWidget {
   const BalanceCard({ Key? key }) : super(key: key);
@@ -23,10 +24,7 @@ class BalanceCard extends StatelessWidget {
                         offset: Offset(1, 1), // changes position of shadow
                       ),
                     ],
-                    image: DecorationImage(
-                      colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
-                      image: AssetImage('assets/images/bgcard.png'),
-                    )
+
                   ),
                   child: Column(
                     children: [

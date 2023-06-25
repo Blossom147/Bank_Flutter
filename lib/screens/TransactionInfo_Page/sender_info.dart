@@ -23,7 +23,7 @@ class SenderInfo extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                'Số TK/Thẻ:',
+                'Số TK/Thẻ',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.normal,
@@ -67,7 +67,7 @@ class SenderInfo extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                'Họ và tên:',
+                'Họ và tên',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.normal,

@@ -1,7 +1,11 @@
-import 'package:assessment_task/login_screen.dart';
-import 'package:assessment_task/signup_screen.dart';
+
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qr/screens/signup_screen.dart';
+
+import 'login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -38,7 +42,7 @@ class WelcomeScreen extends StatelessWidget {
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: 'Wiz',
+                  text: 'KebHana',
                   style: GoogleFonts.portLligatSans(
                     textStyle: Theme.of(context).textTheme.headline1,
                     fontSize: 30,
@@ -47,7 +51,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   children: [
                     TextSpan(
-                      text: 'pna',
+                      text: 'Bank',
                       style: TextStyle(color: Colors.black, fontSize: 30),
                     ),
                   ],
@@ -76,7 +80,7 @@ class WelcomeScreen extends StatelessWidget {
                       ],
                       color: Colors.white),
                   child: Text(
-                    'Login',
+                    'Đăng nhập',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ),
@@ -98,7 +102,7 @@ class WelcomeScreen extends StatelessWidget {
                     border: Border.all(color: Colors.white, width: 2),
                   ),
                   child: Text(
-                    'Register now',
+                    'Đăng ký',
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ),

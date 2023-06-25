@@ -5,24 +5,18 @@ import 'package:intl/intl.dart';
 import '../Transaction_Screen/IBFT_screen.dart';
 
 class AmountInput extends StatelessWidget {
-  final String? initialValue;
+  final String? amount;
   final ValueChanged<String> onChanged;
 
-  AmountInput({this.initialValue, required this.onChanged});
+  AmountInput({this.amount, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-      Text(
-      'Thông tin giao dịch',
-      style: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-    SizedBox(height: 14), Row(
+
+    Row(
       children: [
         Expanded(
           child: Text(
@@ -36,7 +30,7 @@ class AmountInput extends StatelessWidget {
         SizedBox(height: 14),
         Expanded(
           child: TextFormField(
-            initialValue: initialValue,
+            initialValue: amount,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderSide: BorderSide(

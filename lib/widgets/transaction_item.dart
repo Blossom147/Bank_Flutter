@@ -1,6 +1,6 @@
 
-import 'package:banking_app/theme/colors.dart';
 import 'package:flutter/material.dart';
+import '../theme/colors.dart';
 import 'avatar_image.dart';
 
 class TransactionItem extends StatelessWidget {

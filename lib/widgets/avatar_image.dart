@@ -1,7 +1,8 @@
-import 'package:banking_app/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:multiavatar/multiavatar.dart';
+
+import '../theme/colors.dart';
 
 class AvatarImage extends StatelessWidget {
   const AvatarImage(this.name, {this.width = 100, this.height = 100, this.bgColor, this.borderWidth = 0, this.borderColor, this.trBackground = false, this.isSVG = true, this.radius = 50});

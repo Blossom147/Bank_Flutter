@@ -1,9 +1,10 @@
 import 'dart:math';
 
-import 'package:assessment_task/Widget/customClipper.dart';
-import 'package:assessment_task/home_screen.dart';
-import 'package:assessment_task/login_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/customClipper.dart';
+import 'home_screen.dart';
+import 'login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -57,7 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
-                        text: 'Wiz',
+                        text: 'KebHana',
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w700,
@@ -65,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         children: [
                           TextSpan(
-                            text: 'pna',
+                            text: 'Bank',
                             style: TextStyle(color: Colors.black, fontSize: 30),
                           ),
                         ],
@@ -82,7 +84,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Username",
+                                "Tài khoản",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15),
                               ),
@@ -104,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Email address",
+                                "Địa chỉ Email",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15),
                               ),
@@ -127,7 +129,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Password",
+                                "Mật khẩu",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15),
                               ),
@@ -178,7 +180,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         child: Text(
-                          'Register Now',
+                          'Đăng ký ngay',
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       ),
@@ -199,7 +201,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              'Already have an account ?',
+                              'Bạn đã có tài khoản ?',
                               style: TextStyle(
                                   fontSize: 13, fontWeight: FontWeight.w600),
                             ),
@@ -207,7 +209,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               width: 10,
                             ),
                             Text(
-                              'Login',
+                              'Đăng nhập',
                               style: TextStyle(
                                   color: Color(0xff14279B),
                                   fontSize: 13,
@@ -237,7 +239,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: Icon(Icons.keyboard_arrow_left,
                             color: Colors.black),
                       ),
-                      Text('Back',
+                      Text('Quay lại',
                           style: TextStyle(
                               fontSize: 12, fontWeight: FontWeight.w500))
                     ],

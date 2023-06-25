@@ -1,0 +1,28 @@
+targets:
+  $default:
+    builders:
+      # Replace `your_package_name` with the name of your package
+      QR|json_serializable:
+        # Replace `your_source_dir` with the path to the directory containing your source files
+        # containing the DTO classes
+        generate_for:
+          - lib/dto/*.dart
+        options:
+          # Replace `your_package_name` with the name of your package
+          # Replace `lib/your_source_dir` with the path to the directory containing your source files
+          # containing the DTO classes
+          #
+          # This tells json_serializable where to find the generated files
+          # and what namespace to use for them
+          #
+          # If you're using a different package for code generation,
+          # the syntax may be slightly different
+          #
+          # Also, note that the namespace should not contain "lib"
+          # and should be separated by "/" instead of "."
+          #
+          # For more information, see:
+          # https://pub.dev/packages/json_serializable#configure-your-build
+          #
+          generated_member_access: from-json
+          namespace: QR/lib/dto

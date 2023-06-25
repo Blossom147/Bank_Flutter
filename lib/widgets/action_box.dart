@@ -1,5 +1,7 @@
-import 'package:banking_app/theme/colors.dart';
+
 import 'package:flutter/material.dart';
+
+import '../theme/colors.dart';
 
 class ActionBox extends StatelessWidget {
   ActionBox({ Key? key, required this.title, required this.icon, this.color, this.bgColor }) : super(key: key);

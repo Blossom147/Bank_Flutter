@@ -1,5 +1,7 @@
-import 'package:banking_app/theme/colors.dart';
+
 import 'package:flutter/material.dart';
+
+import '../theme/colors.dart';
 
 class BottomBarItem extends StatelessWidget {
   const BottomBarItem(this.icon, this.title, {this.onTap, this.color = inActiveIcon, this.activeColor = primary, this.isActive = false, this.isNotified = false});

@@ -25,7 +25,7 @@ class RecipientInfo extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Tài khoản thụ hưởng:',
+                  'Số tài khoản',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
@@ -66,9 +66,10 @@ class RecipientInfo extends StatelessWidget {
 
           SizedBox(height: 14),
         Row( children: [
+
           Expanded(
             child: Text(
-              'Tên người thụ hưởng:',
+              'Tên tài khoản',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.normal,
@@ -112,7 +113,7 @@ class RecipientInfo extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Ngân hàng thụ hưởng:',
+                  'Ngân hàng',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.normal,

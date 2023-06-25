@@ -1,41 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:qr/constant/CommonConstant.dart';
-import 'package:qr/dto/DeCodeQRResponse.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
 
-import '../TransactionDetails_Page/amount_input.dart';
-import '../TransactionDetails_Page/recipient_info.dart';
-import '../TransactionDetails_Page/sender_info.dart';
-import '../TransactionDetails_Page/transaction_details.dart';
+import '../../dto/IBFT/DeCodeQRResponse.dart';
+import '../TransactionInfo_Page/TransactionDetails_Page/IBFT_details.dart';
+import '../TransactionInfo_Page/amount_input.dart';
+import '../TransactionInfo_Page/recipient_info.dart';
+import '../TransactionInfo_Page/sender_info.dart';
 
-class Qr247Screen extends StatefulWidget {
+class IBFTScreen extends StatefulWidget {
   final Map<String, dynamic>? jsonResponse;
+  final String bank;
 
-  const Qr247Screen({
+  const IBFTScreen({
     Key? key,
-    required this.jsonResponse,
+    required this.jsonResponse, required this.bank,
   }) : super(key: key);
 
   @override
-  _Qr247ScreenState createState() => _Qr247ScreenState();
+  _IBFTScreenState createState() => _IBFTScreenState();
 }
 
-class _Qr247ScreenState extends State<Qr247Screen> {
+class _IBFTScreenState extends State<IBFTScreen> {
   late final DeCodeQRResponse? _decodedQR;
   late String fullName;
   late String accountNumber;
   late String customerId;
   late String amount;
+  late String additionInfo;
+  late String bank = widget.bank;
 
   bool isAmountSet = false;
 
   @override
   void initState() {
     super.initState();
+
     if (widget.jsonResponse != null) {
       _decodedQR = DeCodeQRResponse.fromJson(widget.jsonResponse!);
 
@@ -43,10 +46,10 @@ class _Qr247ScreenState extends State<Qr247Screen> {
       if (widget.jsonResponse!['data'] != null &&
           widget.jsonResponse!['data']['qrInfo'] != null) {
         final transAmount =
-            widget.jsonResponse?['data']['qrInfo']['transAmount'];
+        widget.jsonResponse?['data']['qrInfo']['transAmount'];
         amount = transAmount != null ? transAmount.toString() : '';
         customerId = widget.jsonResponse!['data']['qrInfo']['customerId'];
-
+        additionInfo = widget.jsonResponse!['data']['qrInfo']['additionInfo']?? '';
         if (amount == null) {
           isAmountSet = false;
         } else {
@@ -64,6 +67,7 @@ class _Qr247ScreenState extends State<Qr247Screen> {
   Future<void> _loadCounter() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
+
       fullName = prefs.getString('fullName') ?? fullName;
       accountNumber = prefs.getString('accountNumber') ?? accountNumber;
     });
@@ -119,16 +123,23 @@ class _Qr247ScreenState extends State<Qr247Screen> {
               RecipientInfo(
                 accountId: customerId,
                 recipientName: 'Nguyễn Văn B',
-                bankName: CommonConstant.BANK_NAME,
+                bankName: widget.bank,
               ),
 
               // THông tin giao dịch
+              SizedBox(height: 26),
+              Text(
+                'Thông tin giao dịch',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               SizedBox(height: 14),
-
               // Phần giao diện số tiền
               if (amount == null)
                 AmountInput(
-                  initialValue: null,
+                  amount: null,
                   onChanged: (value) {
                     setState(() {
                       amount = value;
@@ -137,7 +148,7 @@ class _Qr247ScreenState extends State<Qr247Screen> {
                 )
               else
                 AmountInput(
-                  initialValue: formatCurrency(amount),
+                  amount: formatCurrency(amount),
                   onChanged: (value) {
                     setState(() {
                       amount = value.replaceAll(RegExp(r'[^0-9]'), '');
@@ -147,9 +158,9 @@ class _Qr247ScreenState extends State<Qr247Screen> {
 
               SizedBox(height: 14),
 
-              TransactionDetails(
+              IBFTDetails(
                 currency: 'VNĐ',
-                initialContent: '',
+                initialContent: additionInfo,
               ),
 
 
