@@ -1,16 +1,37 @@
-# qr
 
-A new Flutter project.
+APP MOBILE QUÉT MÃ QR
 
-## Getting Started
+Chức năng:
+1. Đăng nhập, đăng ký
+   a. Màn hình Welcome
+      
+   ![WELCOME](images/ImagesDemo/WelcomeScreen.png)
 
-This project is a starting point for a Flutter application.
+   b. Đăng nhập
+    
+   ![LOGIN](images/ImagesDemo/LoginScreen.png)
 
-A few resources to get you started if this is your first Flutter project:
+2. Màn hình chính
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+   ![MAIN SCREEN](images/ImagesDemo/MainScreen.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. Quét mã QR và MyQR
+
+   a. Màn hình quét mã QR
+
+   ![SCAN QR](images/ImagesDemo/ScanScreen.png)
+
+   b. Màn hình MyQR
+
+   ![MY QR](images/ImagesDemo/MyQrScreen.png)
+
+
+4. Chi tiết giao dịch
+
+   a. Chi tiết giao dịch
+
+   ![TRANS DETAILS](images/ImagesDemo/TransDetailsScreen.png)
+
+   b. Quét mã QRPUSH
+
+   ![TRANS SUCCESS](images/ImagesDemo/TransSuccessScreen.png)
